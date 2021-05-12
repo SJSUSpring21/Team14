@@ -3,14 +3,16 @@
 <title>Face Recognition Using SMPC</title>
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'styles/style.css')}}">
 </head>
-<body>
-<h1> Face Recognition</h1>
-<form action="{{ url_for("addName")}}" method="post">
+<body color="lightgrey">
+
+<h1> Face Recognition</h1><br>
+<img src="{{url_for('static', filename='img.jpeg')}}" alt="Facial Recognition" width=180 height=330 class="center">
+<form action="{{ url_for('addName') }}" method="post">
 <P>
 <label for="firstname">First Name:</label>
-<input type="text" id="firstname" name="fname" placeholder="firstname">
+<input type="text" id="firstname" name="fname" placeholder="First Name"><br><br>
 <label for="lastname">Last Name:</label>
-<input type="text" id="lastname" name="lname" placeholder="lastname">
+<input type="text" id="lastname" name="lname" placeholder="Last Name"><br><br>
 <button type="submit" class= "button">Create Profile</button>
 </form>
 
