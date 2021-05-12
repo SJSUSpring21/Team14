@@ -98,7 +98,6 @@ while True:
             example_identity_ = 'Unknown person'
         else:
             example_identity = np.atleast_1d(example_identity)
-            print(example_identity)
             example_identity_ = encoder.inverse_transform(example_identity)
             print(example_identity_)
             
