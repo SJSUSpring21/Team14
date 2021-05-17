@@ -7,7 +7,8 @@ import subprocess
 app = Flask(__name__) 
 app.secret_key = "super secret key"  
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-app.config['UPLOAD_IMAGE'] = "C:\\Users\\kcnou\\Desktop\\SJSU\\CMPE272\\GroupProject\\privacy-preserving-for-face-recognition-master\\test_image"
+image_path = os.getcwd()
+app.config['UPLOAD_IMAGE'] = image_path+"\\test_image"
   
 # A decorator used to tell the application
 # which URL is associated function
@@ -19,8 +20,8 @@ def addName():
        # getting input with name = lname in HTML form 
        #last_name = request.form.get("lname") 
        #give path to location where you want to create folder
-       
-       path = "C:\\Users\\kcnou\\Desktop\\SJSU\\CMPE272\\GroupProject\\privacy-preserving-for-face-recognition-master\\faceImages\\"+first_name
+       path = os.getcwd();
+       path = path+"\\faceImages\\"+first_name
        os.mkdir(path)
        app.config['UPLOAD_FOLDER'] = path
        return redirect(url_for("uploadpicture") )
