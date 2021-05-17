@@ -8,23 +8,29 @@
 <h1> Face Recognition</h1><br>
 <img src="{{url_for('static', filename='img.jpeg')}}" alt="Facial Recognition" width=180 height=330 class="center">
 <form action="{{ url_for('addName') }}" method="post">
-<P>
-<label for="firstname">First Name:</label>
-<input type="text" id="firstname" name="fname" placeholder="First Name"><br><br>
-<label for="lastname">Last Name:</label>
-<input type="text" id="lastname" name="lname" placeholder="Last Name"><br><br>
+<div>
+<br />
+<label for="firstname">Name:</label>
+<input type="text" id="firstname" name="fname" placeholder="Enter Full Name">
+<!--<label for="lastname">Last Name:</label>
+<input type="text" id="lastname" name="lname" placeholder="Last Name"> -->
 <button type="submit" class= "button">Create Profile</button>
+</div>
 </form>
 
 <p>
 <div>
 <button><a href="{{ url_for('run_embedding') }}">Face Embedding</a></button>
 
-
-
 <button><a href="{{ url_for('train_model') }}">Train Model</a></button>
 
-<button><a href="{{ url_for('recognize_face') }}">Recognize Face</a></button>
+<button><a href="{{ url_for('recognize_face') }}">Recognize Face Video</a></button>
+
+<form action="{{ url_for("uploadFaceImage")}}" method="post" enctype="multipart/form-data">
+      <input type=file name=file>
+      <input type=submit value="Upload Face Image">
+    </form>
+<button><a href="{{ url_for('recognize_faceImage') }}">Recognize Face Image</a></button>
 </div>
 </p>
 <p>
