@@ -7,6 +7,7 @@ import subprocess
 app = Flask(__name__) 
 app.secret_key = "super secret key"  
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_IMAGE'] = "C:\\Users\\kcnou\\Desktop\\SJSU\\CMPE272\\GroupProject\\privacy-preserving-for-face-recognition-master\\test_image"
   
 # A decorator used to tell the application
 # which URL is associated function
@@ -16,10 +17,10 @@ def addName():
        # getting input with name = fname in HTML form
        first_name = request.form.get("fname")
        # getting input with name = lname in HTML form 
-       last_name = request.form.get("lname") 
+       #last_name = request.form.get("lname") 
        #give path to location where you want to create folder
        
-       path = "C:\\Users\\kcnou\\Desktop\\SJSU\\CMPE272\\GroupProject\\privacy-preserving-for-face-recognition-master\\faceImages\\"+first_name+last_name
+       path = "C:\\Users\\kcnou\\Desktop\\SJSU\\CMPE272\\GroupProject\\privacy-preserving-for-face-recognition-master\\faceImages\\"+first_name
        os.mkdir(path)
        app.config['UPLOAD_FOLDER'] = path
        return redirect(url_for("uploadpicture") )
@@ -70,6 +71,33 @@ def train_model():
 def recognize_face():
    subprocess.getoutput("python faceRecognizer.py")
    return render_template('index.html', **locals())
+   
+@app.route('/recognize_faceImage')
+def recognize_faceImage():
+   subprocess.getoutput("python faceRecognizer.py")
+   return render_template('index.html', **locals())
+   
+@app.route("/uploadFaceImage", methods =["GET", "POST"]) 
+def uploadFaceImage():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        """if 'file' not in request.files:
+            flash('No file part')
+            return redirect(url_for("uploadpicture"))
+            """
+        #file = request.files['file']
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return render_template("index.html")
+        if file and allowed_file(file.filename):
+            filename = file.filename
+            file.save(os.path.join(app.config['UPLOAD_IMAGE'], filename))
+        #return redirect(url_for("addName"))
+        return render_template("index.html")
+    return render_template("index.html")
  
 if __name__=='__main__':
    #app.run()
