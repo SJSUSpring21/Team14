@@ -47,7 +47,7 @@ if __name__ == '__main__':
     unknown_threshold = 0.65
 
     # load image
-    example_image_path = 'TestPic/Janu.jpg'
+    example_image_path = 'TestPic/Test.jpg'
     example_image = load_image(example_image_path)
     example_image_embedded = embeddingVectors(example_image_path).reshape(1, -1)
 
