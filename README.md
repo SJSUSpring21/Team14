@@ -20,7 +20,6 @@ Faces collected from web
 
 Architecture diagram:
 
-![WhatsApp Image 2021-03-09 at 10 47 52 AM](https://user-images.githubusercontent.com/78889688/110526326-818a3680-80ca-11eb-876e-54f8a311b9cf.jpeg)
 
 
 
