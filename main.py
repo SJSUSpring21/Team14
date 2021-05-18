@@ -75,7 +75,7 @@ def recognize_face():
    
 @app.route('/recognize_faceImage')
 def recognize_faceImage():
-   subprocess.getoutput("python faceRecognizer.py")
+   subprocess.getoutput("python encryptedPrediction.py")
    return render_template('index.html', **locals())
    
 @app.route("/uploadFaceImage", methods =["GET", "POST"]) 
