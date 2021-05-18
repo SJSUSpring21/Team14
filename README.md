@@ -21,6 +21,7 @@ Faces collected from web
 Architecture diagram:
 
 
+<img width="806" alt="Screen Shot 2021-05-17 at 22 48 41 PM" src="https://user-images.githubusercontent.com/78889688/118597829-190ea400-b762-11eb-8ffe-b558e4edb2cd.png">
 
 
 
